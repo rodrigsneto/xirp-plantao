@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Plantao extends Model
+{
+    // fillable podem ser os arquivos que eu defino assim que inicio a instancia
+    protected $fillable = [
+        'plantaoData', 'plantonistaInterno', 'plantonistaExterno', 'teveVisita', 'observacoes'
+    ];
+    use HasFactory;
+}
