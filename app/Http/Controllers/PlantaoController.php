@@ -9,11 +9,7 @@ class PlantaoController extends Controller
 {
     public function create(Request $request) {
         $novoPlantao = [
-            'plantaoData' => "2024-04-04",
-            'plantonistaInterno' => "Rodrigues",
-            'plantonistaExterno' => "Cesar",
-            'teveVisita' => true,
-            'observacoes' => "Sem nenhuma observação",
+            'plantonistaInterno' => "Rodrigues"
         ];
 
         $plantao = new Plantao($novoPlantao);

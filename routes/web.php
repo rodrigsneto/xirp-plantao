@@ -9,7 +9,7 @@ Route::get('/', function () {
 });
 
 // Dashboard de plantões
-Route::get('/plantao-dashboard', [PlantaoController::class, 'index']);
+Route::get('/plantao-dashboard', [PlantaoController::class, 'create']);
 Route::get('/plantao-dashboard/create', [PlantaoController::class, 'create']);
 Route::get('/plantao-selected/{id}', [PlantaoController::class, 'selected']);
 
