@@ -13,7 +13,7 @@ $page_title = "Titulo da Página";
     <h1 class="h1"><?=$page_title;?></h1>
     <h1 class="h4">Março de 2024</h1>
 
-    <a href="plantao-novo"><button type="button" class="btn btn-primary">ADICIONAR UM NOVO PLANTAO</button></a>
+    <a href="/plantao/novo"><button type="button" class="btn btn-primary">ADICIONAR UM NOVO PLANTAO</button></a>
 
 
     <table class="table">
