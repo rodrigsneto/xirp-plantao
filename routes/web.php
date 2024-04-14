@@ -10,6 +10,6 @@ Route::get('/', function () {
 
 // Dashboard de plantões
 Route::get('/plantao/dashboard', [DutyController::class, 'index']);
-Route::get('/plantao/create', [DutyController::class, 'create']);
-Route::get('/plantao/{id}', [DutyController::class, 'selected']);
+Route::get('/plantao/novo', [DutyController::class, 'create']);
+Route::get('/plantao/selected/{id}', [DutyController::class, 'selected']);
 
