@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\PlantaoController;
+use App\Http\Controllers\DutyController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -9,7 +9,7 @@ Route::get('/', function () {
 });
 
 // Dashboard de plantões
-Route::get('/plantao-dashboard', [PlantaoController::class, 'create']);
-Route::get('/plantao-dashboard/create', [PlantaoController::class, 'create']);
-Route::get('/plantao-selected/{id}', [PlantaoController::class, 'selected']);
+Route::get('/plantao/dashboard', [DutyController::class, 'index']);
+Route::get('/plantao/create', [DutyController::class, 'create']);
+Route::get('/plantao/{id}', [DutyController::class, 'selected']);
 
