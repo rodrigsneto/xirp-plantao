@@ -21,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        \Blade::setEchoFormat('e(utf8_encode(%s))');
         Schema::defaultStringLength(191);
     }
 }
