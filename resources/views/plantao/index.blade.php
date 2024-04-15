@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    {{-- <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> --}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Plantonistas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-<?php 
-$page_title = "Titulo da Página";
-?>
 <body>
   <?php
     setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
@@ -39,14 +37,20 @@ $page_title = "Titulo da Página";
           @foreach($plantoes as $plantao)
           <tr>
             <th scope="row">{{strftime('%d/%m/%Y', (strtotime($plantao['plantaoData'])))}}</th>
-            <td>{{strftime('%A', (strtotime($plantao['plantaoData'])))}}</td>
+            <td>
+              {{strftime('%a', (strtotime($plantao['plantaoData'])))}}</td>
             <td>{{$plantao['plantonistaInterno']}}</td>
             <td>{{$plantao['plantonistaExterno']}}</td>
-            <td>{{($plantao['teveVisita'])? "teve" : "não teve"}}</td>
-            <td>{{$plantao['observacoes']}}</td>
+            <td>
+              {!! ($plantao['teveVisita'])? "HOUVE VISITA" : "NÃO HOUVE VISITA" !!}</td>
+            <td>
+              @if($plantao['observacoes'])
+              
+                <button type="button" class="btn btn-primary" onclick="alert('{!! $plantao['observacoes']!!}')">ver comentario</button>
+              
+              @endif
             <td>
               <a href="/plantao/selected/{{$plantao['id']}}"><button type="button" class="btn btn-primary">VIEW</button></a>
-              <a href="#"><button type="button" class="btn btn-primary">ADD VISITA</button></a>
             </td>
           </tr>
           @endforeach
