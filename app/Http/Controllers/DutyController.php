@@ -8,7 +8,13 @@ use App\Models\Duty;
 class DutyController extends Controller
 {
     public function index() {
-        return view('plantao-dashboard');
+        $plantao = new Duty;
+
+        $plantoes = $plantao->all();
+        
+        return view('plantao-dashboard', [
+            'plantoes' => $plantoes
+        ]);
     }
 
     public function selected() {

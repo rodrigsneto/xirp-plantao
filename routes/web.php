@@ -4,9 +4,7 @@ use App\Http\Controllers\DutyController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [DutyController::class, 'index']);
 
 // Dashboard de plantões
 Route::get('/plantao/dashboard', [DutyController::class, 'index']);

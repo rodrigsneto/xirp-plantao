@@ -10,6 +10,12 @@
 $page_title = "Titulo da Página";
 ?>
 <body>
+  <?php
+    setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+    date_default_timezone_set('America/Sao_Paulo');
+  ?>
+
+
     <h1 class="h1"><?=$page_title;?></h1>
     <h1 class="h4">Março de 2024</h1>
 
@@ -30,18 +36,20 @@ $page_title = "Titulo da Página";
         </thead>
         <tbody>
 
-            <tr>
-              <th scope="row">08-08-2022</th>
-              <td>SABADO</td>
-              <td>VANESSA</td>
-              <td>FERNANDO</td>
-              <td>TEVE VISITA</td>
-              <td>SEM OBSERVAÇÃO</td>
-              <td>
-                <a href="#"><button type="button" class="btn btn-primary">VIEW</button></a>
-                <a href="#"><button type="button" class="btn btn-primary">ADD VISITA</button></a>
-              </td>
-            </tr>
+          @foreach($plantoes as $plantao)
+          <tr>
+            <th scope="row">{{strftime('%d/%m/%Y', (strtotime($plantao['plantaoData'])))}}</th>
+            <td>{{strftime('%A', (strtotime($plantao['plantaoData'])))}}</td>
+            <td>{{$plantao['plantonistaInterno']}}</td>
+            <td>{{$plantao['plantonistaExterno']}}</td>
+            <td>{{($plantao['teveVisita'])? "teve" : "não teve"}}</td>
+            <td>{{$plantao['observacoes']}}</td>
+            <td>
+              <a href="/plantao/selected/{{$plantao['id']}}"><button type="button" class="btn btn-primary">VIEW</button></a>
+              <a href="#"><button type="button" class="btn btn-primary">ADD VISITA</button></a>
+            </td>
+          </tr>
+          @endforeach
 
         </tbody>
       </table>
