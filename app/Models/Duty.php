@@ -9,7 +9,7 @@ class Duty extends Model
 {
     // fillable podem ser os arquivos que eu defino assim que inicio a instancia
     protected $fillable = [
-        'plantaoData', 'plantonistaInterno', 'plantonistaExterno', 'teveVisita', 'observacoes'
+        'plantaoData', 'plantonistaInterno', 'plantonistaExterno', 'observacoes'
     ];
     use HasFactory;
 }
