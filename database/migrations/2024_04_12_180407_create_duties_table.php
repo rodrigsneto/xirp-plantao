@@ -16,8 +16,8 @@ return new class extends Migration
             $table->dateTime('plantaoData');
             $table->string('plantonistaInterno');
             $table->string('plantonistaExterno');
-            $table->boolean('teveVisita');
-            $table->string('observacoes');
+            $table->boolean('teveVisita')->default(false);
+            $table->string('observacoes')->nullable();
             $table->timestamps();
         });
     }
