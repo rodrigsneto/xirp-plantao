@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('duties', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('plantaoData');
+            $table->date('plantaoData');
             $table->string('plantonistaInterno');
             $table->string('plantonistaExterno');
             $table->boolean('teveVisita')->default(false);
