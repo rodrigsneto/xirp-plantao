@@ -1,6 +1,9 @@
 # XIRP-Plantão: Sistema de Gerenciamento de Plantões
 
-O  **XIRP-Plantão**  é um sistema desenvolvido para facilitar o gerenciamento da lista de plantões e plantonistas em uma empresa. Ele foi criado com o objetivo de tornar o processo mensal de escalas de plantão mais eficiente e organizado. Seu projeto é construído em  **PHP**, utilizando o framework  **Laravel**, e o banco de dados que usei foi o  **MySQL**.
+O  **XIRP-Plantão**  é um sistema desenvolvido para facilitar o gerenciamento da lista de plantões e plantonistas em uma empresa. Ele foi criado com o objetivo de tornar o processo mensal de escalas de plantão mais eficiente e organizado. Seu projeto é construído em  **PHP**, utilizando o framework  **Laravel**, e o banco de dados **MySQL**.
+
+Você pode visualizar o sistema hospedado em um servidor de hospedagem compartilhada aqui neste link abaixo.
+[xirp-plantao.rodrigsneto.com](https://xirp-plantao.rodrigsneto.com).
 
 ## Funcionalidades Principais
 
