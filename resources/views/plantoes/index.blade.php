@@ -5,11 +5,11 @@
 
 <h1 class="h4">Abril de 2024</h1>
 <br />
-<a href="{{route('plantao.index')}}?mes=03&ano=2024"><button type="button" class="btn btn-primary">Março</button></a>
-<a href="{{route('plantao.index')}}?mes=04&ano=2024"><button type="button" class="btn btn-primary">Abril</button></a>
-<a href="{{route('plantao.index')}}?mes=05&ano=2024"><button type="button" class="btn btn-primary">Maio</button></a>
+<a href="{{route('duty.index')}}?mes=03&ano=2024"><button type="button" class="btn btn-primary">Março</button></a>
+<a href="{{route('duty.index')}}?mes=04&ano=2024"><button type="button" class="btn btn-primary">Abril</button></a>
+<a href="{{route('duty.index')}}?mes=05&ano=2024"><button type="button" class="btn btn-primary">Maio</button></a>
 <br /><br />
-<a href="{{route('plantao.create')}}"><button type="button" class="btn btn-primary">Novo Plantão</button></a>
+<a href="{{route('duty.create')}}"><button type="button" class="btn btn-primary">Novo Plantão</button></a>
 <br /><br />
 
 <table class="table">

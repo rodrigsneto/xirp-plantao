@@ -3,7 +3,7 @@
 
 @endcomponent()
 
-<form method="POST" action="{{route('plantao.store')}}">
+<form method="POST" action="{{route('dutyservices.store')}}">
   @csrf
   @method('post')
   <div class="form-group">

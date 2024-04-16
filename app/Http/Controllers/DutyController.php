@@ -24,7 +24,7 @@ class DutyController extends Controller
                 ->sortBy('plantaoData');
 
             $data += ['plantoes' => $plantoes];
-            return view('plantao.index', $data);
+            return view('plantoes.index', $data);
         }
 
         $plantoes = $plantao->all()
@@ -33,14 +33,14 @@ class DutyController extends Controller
             ->sortBy('plantaoData');
 
         $data += ['plantoes' => $plantoes];
-        return view('plantao.index', $data);
+        return view('plantoes.index', $data);
     }
 
     public function create(Request $request) {
         $data = [
             'page_title' => 'Novo Plantao'
         ];
-        return view('plantao.create', $data);
+        return view('plantoes.create', $data);
     }
 
     public function store(Request $request) {
@@ -52,7 +52,7 @@ class DutyController extends Controller
 
         $newDuty = Duty::create($data);
 
-        return redirect(route('plantao.dashboard'));
+        return redirect(route('duty.index'));
     }
 
     public function dutyservices_read(Request $request) {
@@ -81,7 +81,7 @@ class DutyController extends Controller
         $data = [
             'page_title' => 'Adicionar um chamado para o Plantão'
         ];
-        return view('plantao.selected', $data);
+        return view('atendimentos.create', $data);
     }
 
     public function dutyservice_store(Request $request) {
