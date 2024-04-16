@@ -1,66 +1,91 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# XIRP-Plantão: Sistema de Gerenciamento de Plantões
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+O  **XIRP-Plantão**  é um sistema desenvolvido para facilitar o gerenciamento da lista de plantões e plantonistas em uma empresa. Ele foi criado com o objetivo de tornar o processo mensal de escalas de plantão mais eficiente e organizado. Seu projeto é construído em  **PHP**, utilizando o framework  **Laravel**, e o banco de dados que usei foi o  **MySQL**.
 
-## About Laravel
+## Funcionalidades Principais
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1.  **Cadastro de Plantonistas:**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+    -   O sistema permite o cadastro de plantonistas, incluindo informações como nome, cargo, setor e outras relevantes.
+    -   Os dados dos plantonistas são armazenados no banco de dados para fácil acesso e gerenciamento.
+2.  **Criação de Escalas de Plantão:**
+    
+    -   Os administradores podem criar escalas de plantão mensais.
+    -   As escalas incluem informações sobre os dias de plantão, plantonistas designados e quaisquer observações.
+3.  **Atendimento Interno e Externo:**
+    
+    -   Cada plantão pode ser designado um “plantonista interno” e um “plantonista externo”.
+    -   O atendimento interno é realizado pelos plantonistas internos, enquanto o atendimento externo é feito pelos plantonistas externos.
+4.  **Cadastro de Atendimentos Externos:**
+    
+    -   Os plantonistas internos registram os atendimentos externos realizados durante os plantões pelos antendentes externos.
+    -   Cada atendimento externo inclui informações como cliente atendido, responsável pela empresa, contato e assunto da visita técnica.
+5.  **Visualização e Edição de Escalas:**
+    
+    -   Os usuários podem visualizar as escalas de plantão em formato de lista.
+    -   Os administradores podem editar as escalas, adicionar ou remover plantonistas conforme necessário.
+6.  **Notificações e Lembretes:**
+    
+    -   O sistema envia notificações automáticas para os plantonistas sobre seus próximos plantões.
+    -   Lembretes podem ser configurados para evitar esquecimentos ou conflitos de horários.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Requisitos do Sistema
 
-## Learning Laravel
+-   **PHP 8.2 ou superior**
+-   **Laravel 11.2**
+-   **MySQL 8.2 ou superior**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Instalação
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1.  Clone o repositório do GitHub:
+    
+    ```
+    git clone https://github.com/rodrigsneto/xirp-plantao.git
+    
+    ```
+    
+2.  Instale as dependências do Laravel:
+    
+    ```
+    composer install
+    
+    ```
+    
+3.  Configure o arquivo  `.env`  com as informações do seu banco de dados:
+    
+    ```
+    DB_CONNECTION=mysql
+    DB_HOST=seu-host
+    DB_PORT=3306
+    DB_DATABASE=seu-banco-de-dados
+    DB_USERNAME=seu-usuario
+    DB_PASSWORD=sua-senha
+    
+    ```
+    
+4.  Execute as migrações para criar as tabelas no banco de dados:
+    
+    ```
+    php artisan migrate
+    
+    ```
+    
+5.  Inicie o servidor local:
+    
+    ```
+    php artisan serve
+    
+    ```
+    
+6.  Acesse o sistema em http://localhost:8000
+    
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Contribuição
 
-## Laravel Sponsors
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues, enviar pull requests ou sugerir melhorias.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+----------
 
-### Premium Partners
+**XIRP-Plantão**  é um projeto desenvolvido por Rodrigues Neto.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+🌱 Esperamos que o sistema facilite o gerenciamento de plantões na sua empresa! Caso precise de ajuda ou tenha alguma dúvida, não hesite em entrar em contato. 😊
