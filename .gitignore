@@ -1,5 +1,6 @@
 /.phpunit.cache
 /node_modules
+/database/sql_query
 /public/build
 /public/hot
 /public/storage
