@@ -3,15 +3,13 @@
 use App\Http\Controllers\DutyController;
 use Illuminate\Support\Facades\Route;
 
-
-Route::get('/', [DutyController::class, 'index']);
-
 // Dashboard de plantões
-Route::get('/plantao', [DutyController::class, 'index'])->name('plantao.dashboard');
-Route::get('/plantao/novo', [DutyController::class, 'create'])->name('plantao.create');
+Route::get('/plantoes', [DutyController::class, 'read'])->name('plantao.index');
+Route::get('/novo', [DutyController::class, 'create'])->name('plantao.create');
 Route::post('/plantao', [DutyController::class, 'store'])->name('plantao.store');
 
-Route::get('/plantao/selected/{id}', [DutyController::class, 'selected']);
-Route::get('/plantao/atendimentos/novo', [DutyController::class, 'new_dutyservice']);
-Route::post('/plantao/atendimentos/novo', [DutyController::class, 'new_dutyservice_action']);
+// Atendimentos dos plantões
+Route::get('/atendimentos', [DutyController::class, 'dutyservices_read'])->name('dutyservices.index');
+Route::get('/atendimentos/novo', [DutyController::class, 'dutyservice_create'])->name('dutyservices.create');
+Route::post('/atendimentos', [DutyController::class, 'dutyservice_store'])->name('dutyservices.store');
 
