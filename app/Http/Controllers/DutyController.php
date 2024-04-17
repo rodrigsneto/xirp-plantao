@@ -13,7 +13,10 @@ class DutyController extends Controller
         $plantao = new Duty;
         $mes = $request->input('mes');
         $ano = $request->input('ano');
-        $data = ['page_title' => 'Plantoes'];
+        $data = [
+            'head_title' => 'Plantoes',
+            'body_title' => 'Plantoes'
+        ];
 
         if (!$mes && !$ano) {
             $mes = date('m');
@@ -47,7 +50,8 @@ class DutyController extends Controller
         $data = $request->validate([
             'plantaoData' => 'required|string',
             'plantonistaInterno' => 'required|string',
-            'plantonistaExterno' => 'required|string'
+            'plantonistaExterno' => 'required|string',
+            'observacoes' => 'string'
         ]);
 
         $newDuty = Duty::create($data);
@@ -55,18 +59,37 @@ class DutyController extends Controller
         return redirect(route('duty.index'));
     }
 
-    public function dutyservices_read(Request $request) {
-        $duty_id = $request->input('id');
-        $duty_query = new Duty;
-        $plantao = $duty_query->get()->where('id', '=', $duty_id)->first();
+    public function edit(Duty $plantao) {
+        $data = [
+            'page_title' => 'Editar',
+            'plantao' => $plantao
+        ];
+        return view('plantoes.update', $data);
+    }
 
-        if (!$duty_id || !$plantao) {
+    public function update(Duty $plantao, Request $request) {
+        
+        $new_values = $request->validate([
+            'plantaoData' => 'required|string',
+            'plantonistaInterno' => 'required|string',
+            'plantonistaExterno' => 'required|string'
+        ]);
+
+        $plantao->update($new_values);
+
+        return redirect(route('duty.index'));
+    }
+
+    public function dutyservices_read(Duty $plantao, Request $request) {
+
+        if (!$plantao) {
             return redirect('plantoes');
         };
 
-
         $duty_service = new DutyService;
-        $atendimentos = $duty_service->all()->where('id_duty', '=', $duty_id);
+        $atendimentos = $duty_service->all()->where('id_duty', '=', $plantao['id']);
+
+        // dd($atendimentos);
         
         $data = [
             'atendimentos' => $atendimentos,
@@ -77,24 +100,45 @@ class DutyController extends Controller
         return view('atendimentos.index', $data);
     }
 
-    public function dutyservice_create(Request $request) {
+    public function dutyservice_create(Duty $plantao) {
+
+        $duty_id = $plantao['id'];
+        $duty_query = new Duty;
+        
         $data = [
-            'page_title' => 'Adicionar um chamado para o Plantão'
+            'body_title' => 'Novo Atendimento '.strftime('%d/%m/%Y', (strtotime($plantao['plantaoData']))),
+            'head_title' => 'Novo Atendimento',
+            'plantao' => $plantao
         ];
         return view('atendimentos.create', $data);
     }
 
-    public function dutyservice_store(Request $request) {
-        $novo_atendimento = [
-            'id_duty' => 1,
-            'cliente' => "Mack 7",
-            'requisitante' => "Flaviana",
-            'contato' => '5585987777777',
-            'assunto' => "PDV NAO LIGA"
-        ];
+    public function dutyservice_store(Duty $plantao, Request $request) {
 
-        $duty_service = new Dutyservice($novo_atendimento);
-        $duty_service->save();
-        dd($duty_service);
+        $data = $request->validate([
+            'id_duty' => 'required|string',
+            'cliente' => 'required|string',
+            'requisitante' => 'required|string',
+            'contato' => 'required|string',
+            'assunto' => 'required|string',
+        ]);
+
+        $plantaoAtualiza = new Duty;
+
+        $plantao
+        ->update(['teveVisita' => 1]);
+        
+        $newDutyservice = Dutyservice::create($data);
+        
+        return redirect(route('dutyservices.index', ['plantao' => $plantao]));
+    }
+
+    public function dutyservice_delete(Duty $plantao, Dutyservice $atendimento) {
+
+        $atendimento
+        ->delete();
+
+        return redirect(route('dutyservices.index', ['plantao' => $plantao]));
+
     }
 }
