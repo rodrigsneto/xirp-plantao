@@ -1,5 +1,7 @@
 @component('../components.header', [
-  'page_title' => $page_title])
+  'head_title' => $head_title,
+  'body_title' => $body_title
+  ])
 
 @endcomponent()
 
@@ -42,7 +44,13 @@
         
         @endif
       <td>
-        <a href="/atendimentos?id={{$plantao['id']}}"><button type="button" class="btn btn-primary">VIEW</button></a>
+        <a href="{{route('dutyservices.index', ['plantao' => $plantao])}}">
+          <button type="button" class="btn btn-primary">VIEW</button>
+        </a>
+        <a href="{{route('duty.edit', ['plantao' => $plantao])}}">
+          <button type="button" class="btn btn-primary">EDITAR</button>
+        </a>
+        
       </td>
     </tr>
     @endforeach

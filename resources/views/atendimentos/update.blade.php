@@ -5,7 +5,7 @@
 
 @endcomponent()
 
-<form method="POST" action="{{route('dutyservices.store', ['plantao' => $plantao])}}">
+<form method="POST" action="{{route('dutyservices.store')}}">
   @csrf
   @method('post')
   <div class="form-group">
@@ -22,7 +22,7 @@
   </div>
   <div class="form-group">
     <label for="">Assunto</label>
-    <input type="text" name="assunto" class="form-control" id="" placeholder="Exemplo: SERVIDOR DESLIGOU" required>
+    <input type="text" name="assunto" class="form-control" id="" placeholder="Exemplo: SERVIDOR DESLIGOU">
   </div>
     <input type=hidden name="id_duty" value="{{$plantao['id']}}">
     <input type=submit class="btn btn-primary">

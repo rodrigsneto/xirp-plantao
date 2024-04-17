@@ -1,5 +1,6 @@
 @component('../components.header', [
-  'page_title' => $page_title
+  'head_title' => $page_title,
+  'body_title' => $page_title
   ])
 
 @endcomponent()
@@ -8,7 +9,8 @@
 <div class="h5">Plantonista Externo - {{$plantao['plantonistaExterno']}}</div>
 <div><div class="h5">Observacoes: {{$plantao['observacoes']}}</div></div>
 
-<a href='{{route('dutyservices.create')}}'><button type="button" class="btn btn-primary">Novo Atendimento</button></a>
+<a href='{{route('duty.index')}}'><button type="button" class="btn btn-primary">HOME</button></a>
+<a href='{{route('dutyservices.create', ['plantao' => $plantao])}}'><button type="button" class="btn btn-primary">Novo Atendimento</button></a>
 <br />
 
 <table class="table">
@@ -29,8 +31,10 @@
           <td>{{$atendimento['contato']}}</td>
           <td>{{$atendimento['assunto']}}</td>
             <td>
-              <a href="#"><button type="button" class="btn btn-primary">EDITAR</button></a>
-              <a href="#"><button type="button" class="btn btn-primary">EXCLUIR</button></a>
+              <form method="post" action="{{route('dutyservices.delete', ['atendimento' => $atendimento, 'plantao' => $plantao])}}">
+                @csrf
+                @method('delete')
+                <input type="submit" class="btn btn-primary" value="Excluir">
             </td>
         </tr>
       @endforeach
