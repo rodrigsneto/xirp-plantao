@@ -6,21 +6,23 @@
             <button class="btn btn-primary btn-block">Adicionar Plantão</button>
         </a>
     </div>
-    <div class="mb-1">
-        <a href="{{route('duty.index')}}?mes=04&ano=2024">
-            {{-- <button class="btn btn-secondary btn-block">Voltar um Mês</button> --}}
-            <button class="btn btn-secondary btn-block">Abril</button>
-        </a>
-    </div>
-    <div class="mb-1">
-        <a href="{{route('duty.index')}}">
-            <button class="btn btn-secondary btn-block">Mês Atual</button>
-        </a>
-    </div>
-    <div class="mb-1">
-        <a href="{{route('duty.index')}}?mes=06&ano=2024">
-            {{-- <button class="btn btn-secondary btn-block">Avançar um Mês</button> --}}
-            <button class="btn btn-secondary btn-block">Junho</button>
-        </a>
+    <div class="btn-side-actions">
+        <div class="mb-1">
+            <a href="{{route('duty.index')}}?mes=04&ano=2024">
+                {{-- <button class="btn btn-secondary btn-block">Voltar um Mês</button> --}}
+                <button class="btn btn-secondary btn-block">Abril</button>
+            </a>
+        </div>
+        <div class="mb-1">
+            <a href="{{route('duty.index')}}">
+                <button class="btn btn-secondary btn-block">Mês Atual</button>
+            </a>
+        </div>
+        <div class="mb-1">
+            <a href="{{route('duty.index')}}?mes=06&ano=2024">
+                {{-- <button class="btn btn-secondary btn-block">Avançar um Mês</button> --}}
+                <button class="btn btn-secondary btn-block">Junho</button>
+            </a>
+        </div>
     </div>
 </div>
