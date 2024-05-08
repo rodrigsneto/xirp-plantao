@@ -28,7 +28,7 @@
 
       @foreach($plantoes as $plantao)
       <tr>
-        <th scope="row">{{strftime('%d/%m/%Y', (strtotime($plantao['plantaoData'])))}}</th>
+        <th scope="row">{{strftime('%d/%m', (strtotime($plantao['plantaoData'])))}}</th>
         <td>
           {{strftime('%a', (strtotime($plantao['plantaoData'])))}}</td>
         <td>{{$plantao['plantonistaInterno']}}</td>
