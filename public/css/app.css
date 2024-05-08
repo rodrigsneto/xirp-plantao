@@ -87,6 +87,7 @@ body {
     }
     table .btn {
         font-size: 5px;
+        padding: 3px;
     }
     .content {
         margin-left: 0;
