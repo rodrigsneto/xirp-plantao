@@ -47,12 +47,21 @@ class DutyController extends Controller
     }
 
     public function store(Request $request) {
+        $messages = [
+            'plantaoData.required' => 'Este campo é obrigatório!',
+            'plantaoData.date' => 'Este campo deve ser uma data!',
+            'plantaoData.string' => 'Este campo deve ser um texto!',
+            'plantonistaInterno.required' => 'Este campo é obrigatório!',
+            'plantonistaExterno.required' => 'Este campo é obrigatório!',
+            'observacoes' => 'Este campo deve ser um texto!'
+        ];
+        
         $data = $request->validate([
-            'plantaoData' => 'required|string',
+            'plantaoData' => 'date|required|string',
             'plantonistaInterno' => 'required|string',
             'plantonistaExterno' => 'required|string',
-            'observacoes' => 'string'
-        ]);
+            'observacoes' => 'nullable|string'
+        ], $messages);
 
         $newDuty = Duty::create($data);
 
