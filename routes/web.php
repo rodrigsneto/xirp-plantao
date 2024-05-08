@@ -4,7 +4,7 @@ use App\Http\Controllers\DutyController;
 use Illuminate\Support\Facades\Route;
 
 // Plantões
-Route::get('/plantoes', [DutyController::class, 'read'])->name('duty.index');
+Route::get('/', [DutyController::class, 'read'])->name('duty.index');
 Route::get('/novo', [DutyController::class, 'create'])->name('duty.create');
 Route::post('/plantao', [DutyController::class, 'store'])->name('duty.store');
 Route::get('/editar/{plantao}/', [DutyController::class, 'edit'])->name('duty.edit');
