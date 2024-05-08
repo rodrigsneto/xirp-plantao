@@ -5,59 +5,57 @@
 
 @endcomponent()
 
-<h1 class="h4">Abril de 2024</h1>
-<br />
-<a href="{{route('duty.index')}}?mes=03&ano=2024"><button type="button" class="btn btn-primary">Março</button></a>
-<a href="{{route('duty.index')}}?mes=04&ano=2024"><button type="button" class="btn btn-primary">Abril</button></a>
-<a href="{{route('duty.index')}}?mes=05&ano=2024"><button type="button" class="btn btn-primary">Maio</button></a>
-<br /><br />
-<a href="{{route('duty.create')}}"><button type="button" class="btn btn-primary">Novo Plantão</button></a>
-<br /><br />
+@component('../components.sidebar')
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">DIA</th>
-      <th scope="col">SEMANA</th>
-      <th scope="col">PLANT. INTERNO</th>
-      <th scope="col">PLANT. EXTERNO</th>
-      <th scope="col">VISITAS</th>
-      <th scope="col">OBSERVAÇÕES</th>
-      <th scope="col">VISUALIZAR</th>
-    </tr>
-  </thead>
-  <tbody>
+@endcomponent()
 
-    @foreach($plantoes as $plantao)
-    <tr>
-      <th scope="row">{{strftime('%d/%m/%Y', (strtotime($plantao['plantaoData'])))}}</th>
-      <td>
-        {{strftime('%a', (strtotime($plantao['plantaoData'])))}}</td>
-      <td>{{$plantao['plantonistaInterno']}}</td>
-      <td>{{$plantao['plantonistaExterno']}}</td>
-      <td>
-        {!! ($plantao['teveVisita'])? "HOUVE VISITA" : "NÃO HOUVE VISITA" !!}</td>
-      <td>
-        @if($plantao['observacoes'])
-        
-          <button type="button" class="btn btn-primary" onclick="alert('{!! $plantao['observacoes']!!}')">ver comentario</button>
-        
-        @endif
-      <td>
-        <a href="{{route('dutyservices.index', ['plantao' => $plantao])}}">
-          <button type="button" class="btn btn-primary">VIEW</button>
-        </a>
-        <a href="{{route('duty.edit', ['plantao' => $plantao])}}">
-          <button type="button" class="btn btn-primary">EDITAR</button>
-        </a>
-        
-      </td>
-    </tr>
-    @endforeach
+<div class="content">
 
-  </tbody>
-</table>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">DATA</th>
+        <th scope="col">SEM</th>
+        <th scope="col">INTERNO</th>
+        <th scope="col">EXTERNO</th>
+        <th scope="col">VISITA</th>
+        {{-- <th scope="col">OBSERVAÇÕES</th> --}}
+        <th scope="col">VISUALIZAR</th>
+      </tr>
+    </thead>
+    <tbody>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
-</html>
+      @foreach($plantoes as $plantao)
+      <tr>
+        <th scope="row">{{strftime('%d/%m/%Y', (strtotime($plantao['plantaoData'])))}}</th>
+        <td>
+          {{strftime('%a', (strtotime($plantao['plantaoData'])))}}</td>
+        <td>{{$plantao['plantonistaInterno']}}</td>
+        <td>{{$plantao['plantonistaExterno']}}</td>
+        <td>
+          {!! ($plantao['teveVisita'])? "HOUVE" : "NÃO HOUVE" !!}
+        </td>
+        {{-- <td>
+          @if($plantao['observacoes'])
+          
+            <button type="button" class="btn btn-primary" onclick="alert('{!! $plantao['observacoes']!!}')">ver comentario</button>
+          
+          @endif
+        </td> --}}
+        <td>
+          <a href="{{route('dutyservices.index', ['plantao' => $plantao])}}">
+            <button type="button" class="btn btn-primary">VIEW</button></a>
+          <a href="{{route('duty.edit', ['plantao' => $plantao])}}">
+            <button type="button" class="btn btn-primary">EDITAR</button></a>
+        </td>
+      </tr>
+      @endforeach
+
+    </tbody>
+  </table>
+</div>
+
+@component('../components.footer')
+
+@endcomponent()
