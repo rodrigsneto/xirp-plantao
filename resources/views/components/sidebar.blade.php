@@ -13,7 +13,7 @@
             $data_atual_2 = new DateTime();
 
             // Subtrair um mês da data atual
-            $data_mes_passado = $data_atual->modify('-31 days');
+            $data_mes_passado = $data_atual->modify('-15 days');
             $data_mes_proximo = $data_atual_2->modify('+30 days');
 
             // Obter o valor do mês passado
