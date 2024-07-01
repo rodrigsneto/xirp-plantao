@@ -13,6 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+
         //
     }
 
@@ -23,5 +24,6 @@ class AppServiceProvider extends ServiceProvider
     {
         \Blade::setEchoFormat('e(utf8_encode(%s))');
         Schema::defaultStringLength(191);
+        date_default_timezone_set('America/Sao_Paulo');
     }
 }
